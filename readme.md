@@ -20,10 +20,6 @@ public class EventListenerTest extends EventListenerService {
         if (event.getMessage().equals("!ping")) {
             event.getChannel().sendMessage("pong!");
         }
-
-        if (event.getMessage().equals("!java")) {
-            event.getChannel().sendMessage(String.class.getName());
-        }
     }
 }
 ```
