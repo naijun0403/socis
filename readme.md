@@ -9,7 +9,9 @@ See [here](https://github.com/remote-kakao/example)
 public class EventListenerTest extends EventListenerService {
     public static void main(String[] args) {
         SocisClient client = new SocisClient();
-        client.start(new EventListenerTest());
+        System.out.println("ready");
+        client.addListener(new EventListenerTest());
+        client.start();
         System.out.println("start");
     }
 
@@ -17,6 +19,10 @@ public class EventListenerTest extends EventListenerService {
     public void onMessage(MessageEvent event) {
         if (event.getMessage().equals("!ping")) {
             event.getChannel().sendMessage("pong!");
+        }
+
+        if (event.getMessage().equals("!java")) {
+            event.getChannel().sendMessage(String.class.getName());
         }
     }
 }
