@@ -23,7 +23,7 @@ import java.nio.charset.StandardCharsets;
  * UDP Server
  * @author naijun
  */
-public class Server implements Runnable {
+public class Server {
     private InetAddress host;
     private int port;
     private final boolean isBind;
@@ -90,10 +90,5 @@ public class Server implements Runnable {
                 ", isBind=" + isBind +
                 ", socket=" + socket +
                 '}';
-    }
-
-    @Override
-    public void run() {
-
     }
 }
