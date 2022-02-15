@@ -26,14 +26,6 @@ public class SocisClient extends Thread {
         EventManager.register(eventListener);
     }
 
-//    public synchronized void start(Object eventListener) {
-//        synchronized (SocisClient.class) {
-//            this.server = new Server(this.port);
-//            EventManager.register(eventListener);
-//            this.server.start();
-//        }
-//    }
-
     public void run() {
         this.server = new Server(this.port);
         this.server.start();
