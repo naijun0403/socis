@@ -2,7 +2,7 @@
 remote-kakao for java (Unoffical)
 
 ## Client Example
-See [here](https://github.com/remote-kakao/example)
+See [here](https://github.com/remote-kakao/core-client/releases)
 
 ## Server Example
 ```java
