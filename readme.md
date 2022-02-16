@@ -1,5 +1,5 @@
 # Socis
-remote-kakao for java (Unoffical)
+remote-kakao for java/kotlin (Unoffical)
 
 ## Client Example
 See [here](https://github.com/remote-kakao/core-client/releases)
