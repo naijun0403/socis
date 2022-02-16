@@ -11,7 +11,12 @@ import org.socis.event.message.MessageEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Event listener collection
+ * @author naijun
+ */
 public class EventManager {
+
     private static final List<EventListener> listeners = new ArrayList<>();
 
     public static void register(Object listener) {
@@ -35,4 +40,5 @@ public class EventManager {
             listener.callEvent(event);
         }
     }
+
 }

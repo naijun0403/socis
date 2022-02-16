@@ -8,6 +8,12 @@ package org.socis.event;
 
 import org.socis.event.message.MessageEvent;
 
+/**
+ * EventListener interface
+ * @author naijun
+ */
 public interface EventListener {
+
     void callEvent(MessageEvent event);
+
 }

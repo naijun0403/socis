@@ -11,6 +11,10 @@ import org.socis.network.Server;
 
 import java.util.UUID;
 
+/**
+ * Message Channel
+ * @author naijun
+ */
 public class MessageChannel {
 
     private final Server socket;
@@ -34,19 +38,24 @@ public class MessageChannel {
         if (text == null)
             throw new RuntimeException("Provided text for message");
 
-        String sessionUUID = UUID.randomUUID().toString();
+        try {
+            String sessionUUID = UUID.randomUUID().toString();
 
-        JsonObject packetData = new JsonObject();
-        JsonObject body = new JsonObject();
+            JsonObject packetData = new JsonObject();
+            JsonObject body = new JsonObject();
 
-        body.addProperty("room", this.packet.get("data").getAsJsonObject().get("room").getAsString()); // TODO(roomName)
-        body.addProperty("text", text);
+            body.addProperty("room", this.packet.get("data").getAsJsonObject().get("room").getAsString()); // TODO(roomName)
+            body.addProperty("text", text);
 
-        packetData.addProperty("event", "sendText");
-        packetData.add("data", body);
-        packetData.addProperty("session", sessionUUID);
+            packetData.addProperty("event", "sendText");
+            packetData.add("data", body);
+            packetData.addProperty("session", sessionUUID);
 
-        this.socket.send(packetData);
-        return true;
+            this.socket.send(packetData);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
+
 }

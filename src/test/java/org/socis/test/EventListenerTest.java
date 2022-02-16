@@ -28,5 +28,10 @@ public class EventListenerTest extends EventListenerService {
         if (event.getMessage().equals("!java")) {
             event.getChannel().sendMessage(String.class.getName());
         }
+
+        if (event.getMessage().equals("!authorTest")) {
+            event.getChannel().sendMessage(event.getAuthor().getName());
+            System.out.println(event.getAuthor().getProfileBase64());
+        }
     }
 }

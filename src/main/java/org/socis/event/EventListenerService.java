@@ -13,6 +13,7 @@ import org.socis.event.message.MessageEvent;
  * @author naijun
  */
 public abstract class EventListenerService implements EventListener {
+
     public void onMessage(MessageEvent event) {}
 
     @Override
@@ -24,4 +25,5 @@ public abstract class EventListenerService implements EventListener {
             throw new RuntimeException("An error occurred while processing the event.");
         }
     }
+
 }

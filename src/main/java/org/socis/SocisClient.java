@@ -9,7 +9,12 @@ package org.socis;
 import org.socis.event.EventManager;
 import org.socis.network.Server;
 
+/**
+ * Socis Client
+ * @author naijun
+ */
 public class SocisClient extends Thread {
+
     private final int port;
     private Server server;
 
@@ -30,4 +35,5 @@ public class SocisClient extends Thread {
         this.server = new Server(this.port);
         this.server.start();
     }
+
 }

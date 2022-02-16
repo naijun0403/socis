@@ -9,7 +9,12 @@ package org.socis.helper;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * encodeURIComponent
+ * @author naijun
+ */
 public class Encoder {
+
     public static String encodeURIComponent(String data) {
         return URLEncoder.encode(data, StandardCharsets.UTF_8)
                 .replaceAll("\\+", "%20")
@@ -19,4 +24,5 @@ public class Encoder {
                 .replaceAll("\\%29", ")")
                 .replaceAll("\\%7E", "~");
     }
+
 }

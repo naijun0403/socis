@@ -8,6 +8,7 @@ package org.socis.network;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import org.socis.api.author.MessageAuthor;
 import org.socis.api.channel.MessageChannel;
 import org.socis.event.EventManager;
 import org.socis.event.message.MessageEvent;
@@ -24,6 +25,7 @@ import java.nio.charset.StandardCharsets;
  * @author naijun
  */
 public class Server {
+
     private InetAddress host;
     private int port;
     private final boolean isBind;
@@ -63,7 +65,8 @@ public class Server {
         JsonObject json = new Gson().fromJson(new String(packet.getData(), packet.getOffset(), packet.getLength(), StandardCharsets.UTF_8).replaceAll("\0", ""), JsonObject.class);
         if (json.has("event")) {
             MessageChannel channel = new MessageChannel(this, json);
-            MessageEvent event = new MessageEvent(json, channel);
+            MessageAuthor author = new MessageAuthor(json);
+            MessageEvent event = new MessageEvent(json, channel, author);
             EventManager.handle(event);
         }
     }
@@ -91,4 +94,5 @@ public class Server {
                 ", socket=" + socket +
                 '}';
     }
+
 }
