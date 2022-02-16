@@ -6,6 +6,7 @@
 
 package org.socis.event;
 
+import lombok.NonNull;
 import org.socis.event.message.MessageEvent;
 
 /**
@@ -14,6 +15,6 @@ import org.socis.event.message.MessageEvent;
  */
 public interface EventListener {
 
-    void callEvent(MessageEvent event);
+    void callEvent(@NonNull MessageEvent event);
 
 }

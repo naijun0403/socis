@@ -10,6 +10,7 @@ import org.socis.event.message.MessageEvent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Event listener collection
@@ -36,6 +37,7 @@ public class EventManager {
     }
 
     public static void handle(MessageEvent event) {
+        Objects.requireNonNull(event);
         for (EventListener listener : listeners) {
             listener.callEvent(event);
         }

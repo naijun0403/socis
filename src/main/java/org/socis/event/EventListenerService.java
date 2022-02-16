@@ -6,6 +6,7 @@
 
 package org.socis.event;
 
+import lombok.NonNull;
 import org.socis.event.message.MessageEvent;
 
 /**
@@ -14,10 +15,10 @@ import org.socis.event.message.MessageEvent;
  */
 public abstract class EventListenerService implements EventListener {
 
-    public void onMessage(MessageEvent event) {}
+    public void onMessage(@NonNull MessageEvent event) {}
 
     @Override
-    public final void callEvent(MessageEvent event) {
+    public final void callEvent(@NonNull MessageEvent event) {
         try {
             onMessage(event);
         } catch (Exception e) {

@@ -8,6 +8,7 @@ package org.socis.network;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import lombok.NonNull;
 import org.socis.api.author.MessageAuthor;
 import org.socis.api.channel.MessageChannel;
 import org.socis.event.EventManager;
@@ -19,6 +20,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 /**
  * UDP Server
@@ -61,7 +63,8 @@ public class Server {
         }
     }
 
-    private void pushEvent(DatagramPacket packet) {
+    private void pushEvent(@NonNull DatagramPacket packet) {
+        Objects.requireNonNull(packet);
         JsonObject json = new Gson().fromJson(new String(packet.getData(), packet.getOffset(), packet.getLength(), StandardCharsets.UTF_8).replaceAll("\0", ""), JsonObject.class);
         if (json.has("event")) {
             MessageChannel channel = new MessageChannel(this, json);
@@ -75,7 +78,7 @@ public class Server {
      * send Packet
      * @param jsonObject
      */
-    public void send(JsonObject jsonObject) {
+    public void send(@NonNull JsonObject jsonObject) {
         try {
             String json = Encoder.encodeURIComponent(jsonObject.toString());
             DatagramPacket packet = new DatagramPacket(json.getBytes(), json.length(), this.host, this.port);

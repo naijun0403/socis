@@ -7,6 +7,7 @@
 package org.socis.event.message;
 
 import com.google.gson.JsonObject;
+import lombok.NonNull;
 import org.socis.api.author.MessageAuthor;
 import org.socis.api.channel.MessageChannel;
 
@@ -26,15 +27,15 @@ public class MessageEvent {
         this.author = author;
     }
 
-    public MessageChannel getChannel() {
+    public @NonNull MessageChannel getChannel() {
         return channel;
     }
 
-    public MessageAuthor getAuthor() {
+    public @NonNull MessageAuthor getAuthor() {
         return author;
     }
 
-    public String getMessage() {
+    public @NonNull String getMessage() {
         return packet.get("data").getAsJsonObject().get("content").getAsString();
     }
 

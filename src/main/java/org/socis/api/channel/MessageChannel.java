@@ -7,6 +7,7 @@
 package org.socis.api.channel;
 
 import com.google.gson.JsonObject;
+import lombok.NonNull;
 import org.socis.network.Server;
 
 import java.util.UUID;
@@ -25,7 +26,7 @@ public class MessageChannel {
         this.packet = packet;
     }
 
-    public String getChannelName() {
+    public @NonNull String getChannelName() {
         return packet.get("data").getAsJsonObject().get("room").getAsString();
     }
 
@@ -34,8 +35,8 @@ public class MessageChannel {
      * @param text
      * @return
      */
-    public boolean sendMessage(String text) {
-        if (text == null)
+    public @NonNull boolean sendMessage(@NonNull String text) {
+        if (text.equals(""))
             throw new RuntimeException("Provided text for message");
 
         try {

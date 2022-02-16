@@ -7,6 +7,7 @@
 package org.socis.api.author;
 
 import com.google.gson.JsonObject;
+import lombok.NonNull;
 
 /**
  * Message Author
@@ -20,11 +21,11 @@ public class MessageAuthor {
         this.packet = packet;
     }
 
-    public String getName() {
+    public @NonNull String getName() {
         return packet.get("data").getAsJsonObject().get("sender").getAsString();
     }
 
-    public String getProfileBase64() {
+    public @NonNull String getProfileBase64() {
         return packet.get("data").getAsJsonObject().get("profileImage").getAsString();
     }
 

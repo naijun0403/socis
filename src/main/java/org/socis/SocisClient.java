@@ -6,6 +6,7 @@
 
 package org.socis;
 
+import lombok.NonNull;
 import org.socis.event.EventManager;
 import org.socis.network.Server;
 
@@ -27,7 +28,7 @@ public class SocisClient extends Thread {
         this.server = null;
     }
 
-    public void addListener(Object eventListener) {
+    public void addListener(@NonNull Object eventListener) {
         EventManager.register(eventListener);
     }
 
