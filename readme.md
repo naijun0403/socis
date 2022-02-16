@@ -34,7 +34,7 @@ class EventListenerTest : EventListenerService() {
             val client = SocisClient()
             client.addListener(EventListenerTest())
             println("ready")
-            client.start();
+            client.start()
             println("start")
         }
     }
