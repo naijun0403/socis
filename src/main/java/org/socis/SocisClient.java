@@ -28,11 +28,15 @@ public class SocisClient extends Thread {
         this.server = null;
     }
 
-    public void addListener(@NonNull Object eventListener) {
-        EventManager.register(eventListener);
+    public SocisClient addListener(@NonNull Object eventListener) {
+        EventManager.instance.register(eventListener);
+        return this;
     }
 
+    @Override
     public void run() {
+        super.run();
+        if (EventManager.instance.getLength() == 0) throw new RuntimeException("There are no registered event listeners.");
         this.server = new Server(this.port);
         this.server.start();
     }

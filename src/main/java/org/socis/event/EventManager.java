@@ -18,9 +18,11 @@ import java.util.Objects;
  */
 public class EventManager {
 
-    private static final List<EventListener> listeners = new ArrayList<>();
+    public static final EventManager instance = new EventManager(); // singleton
 
-    public static void register(Object listener) {
+    private final List<EventListener> listeners = new ArrayList<>();
+
+    public void register(Object listener) {
         if (!(listener instanceof EventListener)) {
             throw new IllegalArgumentException("Listener must be EventListener");
         }
@@ -28,7 +30,7 @@ public class EventManager {
         listeners.add((EventListener) listener);
     }
 
-    public static void unregister(Object listener) {
+    public void unregister(Object listener) {
         if (!(listener instanceof EventListener)) {
             System.out.println("[ERROR] An error occurred while removing the event listener.");
         }
@@ -36,11 +38,15 @@ public class EventManager {
         listeners.remove(listener);
     }
 
-    public static void handle(MessageEvent event) {
+    public void handle(MessageEvent event) {
         Objects.requireNonNull(event);
         for (EventListener listener : listeners) {
             listener.callEvent(event);
         }
+    }
+
+    public int getLength() {
+        return listeners.size();
     }
 
 }

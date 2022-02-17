@@ -30,7 +30,6 @@ public class Server {
 
     private InetAddress host;
     private int port;
-    private final boolean isBind;
     public DatagramSocket socket;
 
     public Server() {
@@ -40,7 +39,6 @@ public class Server {
     public Server(int port) {
         this.host = null;
         this.port = port;
-        this.isBind = false;
         this.socket = null;
     }
 
@@ -70,7 +68,7 @@ public class Server {
             MessageChannel channel = new MessageChannel(this, json);
             MessageAuthor author = new MessageAuthor(json);
             MessageEvent event = new MessageEvent(json, channel, author);
-            EventManager.handle(event);
+            EventManager.instance.handle(event);
         }
     }
 
@@ -91,11 +89,9 @@ public class Server {
     @Override
     public String toString() {
         return "Server{" +
-                "host='" + host + '\'' +
+                "host=" + host +
                 ", port=" + port +
-                ", isBind=" + isBind +
                 ", socket=" + socket +
                 '}';
     }
-
 }
